@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
 
-	/**
+    /**
      * @ORM\Id @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      * @var integer
@@ -69,7 +69,7 @@ class User
     
     public function setName($name)
     {
-        return $this->name = $name;
+        return $this->name = filter_var($name, FILTER_SANITIZE_STRING);
     }
     
     public function getLogin()
@@ -90,6 +90,9 @@ class User
     
     public function setEmail($email)
     {
+    	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    		throw new \InvalidArgumentException('INVALID EMAIL');
+    	}
         return $this->email = $email;
     }
     
