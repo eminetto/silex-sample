@@ -6,7 +6,7 @@
 	curl -s https://getcomposer.org/installer | php
 ### Execute
 
-	php composer.phar install
+	php composer.phar create-project eminetto/silex-sample project_name
 
 ### Configure database connection
 	Modify database connection parameters in bootstrap.php
