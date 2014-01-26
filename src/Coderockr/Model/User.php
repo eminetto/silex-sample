@@ -90,7 +90,7 @@ class User
     
     public function setEmail($email)
     {
-    	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    	if (FALSE === filter_var($email, FILTER_VALIDATE_EMAIL)) {
     		throw new \InvalidArgumentException('INVALID EMAIL');
     	}
         return $this->email = $email;
