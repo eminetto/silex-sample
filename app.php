@@ -24,8 +24,8 @@ $app->get('/', function ()  use ($app, $em) {
 
 $app->post('/user', function() use ($app, $em) {
     $name = $app['request']->get('name');
-    $login = $app['request']->get('name');
-    $email = $app['request']->get('name');
+    $login = $app['request']->get('login');
+    $email = $app['request']->get('email');
     $user = $em->getRepository('Coderockr\Model\User')->findBy(array('login' => $login));
     if (count($user) == 0) {
         $user = new Coderockr\Model\User();
